@@ -1,7 +1,7 @@
 from find_structure import *
 
-Lfile='data/bcspwr10/bcspwr10_2.txt';
-Cfile='data/bcspwr10/bcspwr10_communities.txt'
+Lfile='/Users/didi/Desktop/store/data/fpga_dcop1220/fpga_dcop1220.txt';
+Cfile='/Users/didi/Desktop/store/data/fpga_dcop1220/fpga_dcop1220_communities.txt'
 L,C,LL=read_file(Lfile,Cfile)
 
 #计算图有几个Communites
@@ -32,4 +32,4 @@ train_data=c_[train_data,label_data]
 train_data=c_[node_name,train_data]
 print(train_data)
 
-savetxt("result/bcspwr_node_2.csv",train_data,fmt="%d",delimiter=",")
+savetxt("result/fpga_dcop1220.csv",train_data,fmt="%d",delimiter=",")

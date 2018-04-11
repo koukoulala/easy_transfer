@@ -35,10 +35,10 @@ def result_try(filepath,w,n):
 
     print("错误的总数目：", err)
     acc = 1 - (err / len(data))
-    np.savetxt("result/para_try_2.csv", fal, fmt="%d", delimiter=",")
+    np.savetxt("result/para_try_facebook.csv", fal, fmt="%d", delimiter=",")
     return acc
 
 
 if __name__ == "__main__":
-    acc = result_try("result/bcspwr_node_2.csv", [0.64306,1.017077 ,1.0857124], 8)
+    acc = result_try("result/facebook.csv", [1.22091  ,  0.40555146   ,   0.005437157], 18)
     print("准确率为：", acc)

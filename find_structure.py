@@ -36,21 +36,21 @@ def find_stru(L,n,C,Tnode):
     k=0
     for ll in l:
         if ll!=[]:
-            W[k][0]=0
-            for i in ll:
+            while 1:
+                if len(ll)==0:    #不能在for循环里面用remove,所以使用判断列表是否为空的方法，每次取列表的第一个
+                    break;
+                i=ll[0]
                 flag=0; #如果flag=0，也就是不存在w2结构，也就是只有w1结构
                 for j in L:
                     if j[1]==i and C[j[0]]==k: # 前驱点有前驱,且类别也相同
                         k2 = j[0]
+                        flag=1
                         if k2 in ll:  # 前驱的前驱也是直接前驱，w3的结构
-                            if flag==0:
-                                W[k][2] += 1;
-                                ll.remove(k2)  #k2这个节点是用来组成w3结构的，所以要去掉，否则会又组成一个w1结构
-                                flag=1
+                            W[k][2] += 1;
+                            ll.remove(k2)  #k2这个节点是用来组成w3结构的，所以要去掉，否则会又组成一个w1结构
                         else:
-                            if flag==0:  #每个节点只能参与到一个结构中
-                                W[k][1] += 1;
-                                flag=1
+                            W[k][1] += 1;
+                ll.remove(i)
                 if flag == 0:
                     W[k][0] += 1;
         k+=1

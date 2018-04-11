@@ -11,7 +11,7 @@ start_time = time.time()
 path = 'img/'
 
 # 将所有的图片resize成100*100
-w = 8
+w = 18
 h = 3
 c = 1            #c是指图像的通道数,灰度图像是单通道的
 
@@ -61,7 +61,7 @@ conv1 = tf.layers.conv2d(inputs=x, filters=1, kernel_size=[1,3], activation=tf.n
 #conv1 = tf.layers.conv2d(inputs=x, filters=1, kernel_size=[1,3], activation=tf.nn.relu,strides=1,name="conv1",
 #                         kernel_initializer=tf.random_uniform_initializer(minval=0, maxval=None))
 
-re1 = tf.reshape(conv1, [-1, 8 * 1 * 1])
+re1 = tf.reshape(conv1, [-1, w * 1 * 1])
 
 # 全连接层
 dense1 = tf.layers.dense(inputs=re1, units=1024, activation=tf.nn.relu,
@@ -70,7 +70,7 @@ dense1 = tf.layers.dense(inputs=re1, units=1024, activation=tf.nn.relu,
 dense2 = tf.layers.dense(inputs=dense1, units=512, activation=tf.nn.relu,
                          kernel_initializer=tf.truncated_normal_initializer(stddev=0.01),
                          kernel_regularizer=tf.contrib.layers.l2_regularizer(0.003))
-logits = tf.layers.dense(inputs=dense2, units=8, activation=None,
+logits = tf.layers.dense(inputs=dense2, units=w, activation=None,
                          kernel_initializer=tf.truncated_normal_initializer(stddev=0.01),
                          kernel_regularizer=tf.contrib.layers.l2_regularizer(0.003))
 # ---------------------------网络结束---------------------------
@@ -97,8 +97,8 @@ def minibatches(inputs=None, targets=None, batch_size=None, shuffle=False):
 
 # 训练和测试数据，可将n_epoch设置更大一些
 
-n_epoch = 50
-batch_size = 64
+n_epoch = 80
+batch_size = 80
 max_acc=0;k_epoch=0;     #最大的准确率以及第几次迭代
 save_csv=[]
 sess = tf.InteractiveSession()
@@ -153,5 +153,5 @@ num_time=end_time-start_time;
 print("第",k_epoch ,"次迭代时达到最大准确率为：",max_acc)
 print("最大准确率时的权重值：",w[0],"  ",w[1],"    ",w[2])
 print("运行总时间为：",num_time)
-savetxt("result/model_save.csv",save_csv,fmt="%f",delimiter=",")
+savetxt("result/model_save_facebook.csv",save_csv,fmt="%f",delimiter=",")
 sess.close()
