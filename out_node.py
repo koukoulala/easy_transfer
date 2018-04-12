@@ -1,7 +1,7 @@
 from find_structure import *
 
-Lfile='/Users/didi/Desktop/store/data/fpga_dcop1220/fpga_dcop1220.txt';
-Cfile='/Users/didi/Desktop/store/data/fpga_dcop1220/fpga_dcop1220_communities.txt'
+Lfile='/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh.txt';
+Cfile='/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh_communities.txt'
 L,C,LL=read_file(Lfile,Cfile)
 
 #计算图有几个Communites
@@ -12,6 +12,7 @@ for key in C:
         n+=1
 print("图的commnunite类型：",k)
 print("图的commnunite数目=",n)
+print(len(C),len(LL))
 
 #把3邻居结构数目保存到csv文件中
 train_node=LL
@@ -32,4 +33,4 @@ train_data=c_[train_data,label_data]
 train_data=c_[node_name,train_data]
 print(train_data)
 
-savetxt("result/fpga_dcop1220.csv",train_data,fmt="%d",delimiter=",")
+savetxt("result/cit-HepPh_communities.csv",train_data,fmt="%d",delimiter=",")

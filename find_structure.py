@@ -21,6 +21,8 @@ def read_file(Lfile,Cfile):
 #param:L是节点对list，n是communite的数目，C是（node,communite）字典，Tnode是目标节点
 #return:W矩阵，W[i][j]=k代表目标节点的邻居类别=i的节点的wj结构有k个，n行3列的二维数组
 def find_stru(L,n,C,Tnode):
+    #if Tnode not in C.keys():
+        #C[Tnode]=0
     W=zeros([n,3],int16)
     #l为目标节点的不同类别的直接前驱点
     l=[];i=0;
@@ -29,6 +31,8 @@ def find_stru(L,n,C,Tnode):
         i+=1
     for i in L:
         if i[1] == Tnode:
+            #if i[0] not in C.keys():
+                #C[i[0]] = C[Tnode]
             l[C[i[0]]].append(i[0])
     #print("目标节点",Tnode,"的直接前驱情况:",l)
 
@@ -50,7 +54,10 @@ def find_stru(L,n,C,Tnode):
                             ll.remove(k2)  #k2这个节点是用来组成w3结构的，所以要去掉，否则会又组成一个w1结构
                         else:
                             W[k][1] += 1;
-                ll.remove(i)
+                try:
+                    ll.remove(i)
+                except:
+                    print(Tnode)
                 if flag == 0:
                     W[k][0] += 1;
         k+=1

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/easy_transfer.iml" filepath="$PROJECT_DIR$/.idea/easy_transfer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../graph-data-analysis-master/.idea/graph-data-analysis-master.iml" filepath="$PROJECT_DIR$/../graph-data-analysis-master/.idea/graph-data-analysis-master.iml" />
     </modules>
   </component>
 </project>
