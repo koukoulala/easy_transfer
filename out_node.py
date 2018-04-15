@@ -1,7 +1,7 @@
 from find_structure import *
 
-Lfile='/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh.txt';
-Cfile='/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh_communities.txt'
+Lfile='data/userrelation.txt';
+Cfile='data/community.txt'
 L,C,LL=read_file(Lfile,Cfile)
 
 #计算图有几个Communites
@@ -25,7 +25,8 @@ for Trnode in train_node:
     W2=W.reshape(n*3,order='C')
     #print("转换成行向量",W2)#一行有n*3列
     train_data[k]=W2
-    node_name[k]=Trnode
+    #node_name[k]=Trnode
+    node_name[k]=k
     label_data[k]=C[Trnode]
     k+=1
 
@@ -33,4 +34,4 @@ train_data=c_[train_data,label_data]
 train_data=c_[node_name,train_data]
 print(train_data)
 
-savetxt("result/cit-HepPh_communities.csv",train_data,fmt="%d",delimiter=",")
+savetxt("result/weibo.csv",train_data,fmt="%d",delimiter=",")

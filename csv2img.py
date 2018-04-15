@@ -23,7 +23,7 @@ def csv2img(filepath,n):
             image=Image.fromarray(img) #从数据生成image对象
 
             #生成保存image的路径
-            path="img/facebook_"+label
+            path="img/weibo_"+label
             if not os.path.isdir(path):
                 os.makedirs(path)
             path =path+ "/" + node + ".png"
@@ -32,4 +32,4 @@ def csv2img(filepath,n):
 
 
 if __name__=="__main__":
-    csv2img('result/facebook.csv',18)
+    csv2img('result/weibo.csv',6)

@@ -11,7 +11,7 @@ start_time = time.time()
 path = 'img/'
 
 # 将所有的图片resize成100*100
-w = 18
+w = 6
 h = 3
 c = 1            #c是指图像的通道数,灰度图像是单通道的
 
@@ -153,5 +153,5 @@ num_time=end_time-start_time;
 print("第",k_epoch ,"次迭代时达到最大准确率为：",max_acc)
 print("最大准确率时的权重值：",w[0],"  ",w[1],"    ",w[2])
 print("运行总时间为：",num_time)
-savetxt("result/model_save_facebook.csv",save_csv,fmt="%f",delimiter=",")
+savetxt("result/model_save_weibo.csv",save_csv,fmt="%f",delimiter=",")
 sess.close()
