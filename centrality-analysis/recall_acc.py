@@ -17,7 +17,7 @@ def recall_acc(csvpath,datepath,n):
         for lines in f.readlines():
             if i==n:
                 break
-            line=lines.strip("\n").split("\t")
+            line=lines.strip("\n").split(" ")
             date_node.append(line[0])
             i+=1
             if line[0] in csv_node:
@@ -34,5 +34,5 @@ def recall_acc(csvpath,datepath,n):
 
 if __name__=="__main__":
     acc,recall=recall_acc("result/cit-HepPh.csv",
-                          "/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh-dates.txt",150)
+                          "/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh_communities.txt",200)
     print("准确率为：",acc,"召回率为：",recall)

@@ -32,4 +32,4 @@ def csv2img(filepath,n):
 
 
 if __name__=="__main__":
-    csv2img('result/weibo.csv',6)
+    csv2img('result/weibo.csv',5)

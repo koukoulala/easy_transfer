@@ -35,10 +35,10 @@ def result_try(filepath,w,n):
 
     print("错误的总数目：", err)
     acc = 1 - (err / len(data))
-    np.savetxt("result/para_try_weibo.csv", fal, fmt="%d", delimiter=",")
+    np.savetxt("result/para_try_weibok.csv", fal, fmt="%d", delimiter=",")
     return acc
 
 
 if __name__ == "__main__":
-    acc = result_try("result/weibo.csv", [1 , 1,  1], 6)
+    acc = result_try("result/weibo.csv", [0.5622341 ,   0.97987163   ,   1.6222271], 5)
     print("准确率为：", acc)

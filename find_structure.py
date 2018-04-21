@@ -16,9 +16,6 @@ def read_file(Lfile,Cfile):
         for line in f:
             (key,value)=[int(x) for x in line.split()]
             C[key]=value
-    for i in LL:
-	    if i not in C.keys():
-		    C[i]=0
     return L,C,LL
 
 #param:L是节点对list，n是communite的数目，C是（node,communite）字典，Tnode是目标节点

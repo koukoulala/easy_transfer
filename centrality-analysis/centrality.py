@@ -3,7 +3,7 @@ from read_structure import *
 
 if __name__=="__main__":
     start=time.clock()
-    Lfile="/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh.txt"
+    Lfile="/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh.txt"
     L,train_node=get_list_set(Lfile)
 
     stru_num=zeros([len(train_node),3],int)
