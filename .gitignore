@@ -9,3 +9,7 @@
 *.pyc
 *.html
 *.xlm
+.result/*
+.img/*
+.data/*
+!.gitignore
