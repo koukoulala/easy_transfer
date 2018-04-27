@@ -3,7 +3,7 @@ from read_structure import *
 
 if __name__=="__main__":
     start=time.clock()
-    Lfile="/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh.txt"
+    Lfile="/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh.txt"
     L,train_node=get_list_set(Lfile)
 
     stru_num=zeros([len(train_node),3],int)
@@ -24,7 +24,7 @@ if __name__=="__main__":
     #对数组按照num列进行从大到小的排序
     sorted_node=save_stru[argsort(-save_stru[:,4])]
     print(sorted_node[0:100,:])
-    savetxt("result/cit-HepPh.csv",sorted_node,fmt="%d",delimiter=',')
+    savetxt("result/deal_cit-HepPh.csv",sorted_node,fmt="%d",delimiter=',')
     end=time.clock()
     sum_time=end-start
     print("程序运行总时间为:",sum_time,"s")

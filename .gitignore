@@ -13,3 +13,6 @@
 .img/*
 .data/*
 !.gitignore
+*.csv
+*.txt
+*.png

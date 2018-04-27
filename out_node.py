@@ -1,7 +1,7 @@
 from find_structure import *
 
 Lfile='/Users/didi/Desktop/store/data/weibo/deal_weibo.txt';
-Cfile='/Users/didi/Desktop/store/data/weibo/deal_weibo_community.txt'
+Cfile='/Users/didi/Desktop/store/data/weibo/deal_change2_weibo_communities.txt'
 L,C,LL=read_file(Lfile,Cfile)
 
 #计算图有几个Communites
@@ -34,4 +34,4 @@ train_data=c_[train_data,label_data]
 train_data=c_[node_name,train_data]
 print(train_data)
 
-savetxt("result/weibo.csv",train_data,fmt="%d",delimiter=",")
+savetxt("result/weibo_change.csv",train_data,fmt="%d",delimiter=",")

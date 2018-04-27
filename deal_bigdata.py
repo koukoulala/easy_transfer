@@ -32,11 +32,11 @@ def deal_bigdata(Lfile,Cfile):
         deal_C.append((a,C[key]-1))
 
     print(deal_C[0:10])
-    np.savetxt("/Users/didi/Desktop/store/data/weibo/deal_weibo.txt",deal_L,fmt="%d",delimiter=" ")
-    np.savetxt("/Users/didi/Desktop/store/data/weibo/deal_weibo_community.txt", deal_C, fmt="%d", delimiter=" ")
+    np.savetxt("/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh.txt",deal_L,fmt="%d",delimiter=" ")
+    np.savetxt("/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh_communities.txt", deal_C, fmt="%d", delimiter=" ")
 
 
 if __name__=="__main__":
-    Lfile = '/Users/didi/Desktop/store/data/weibo/processed_weibo.txt';
-    Cfile = '/Users/didi/Desktop/store/data/weibo/processed_weibo_communities.txt'
+    Lfile = '/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh.txt';
+    Cfile = '/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh_communities.txt'
     deal_bigdata(Lfile,Cfile)
