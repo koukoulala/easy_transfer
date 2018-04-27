@@ -63,8 +63,8 @@ def ExDegree(Lfile, Cfile, n, k):
 
 
 if __name__ == "__main__":
-    Lfile = '/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh.txt';
-    Cfile = '/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh_communities.txt'
+    Lfile = '~/cit-HepPh/deal_cit-HepPh.txt';
+    Cfile = '~/cit-HepPh/deal_cit-HepPh_communities.txt'
     sum_time=ExDegree(Lfile, Cfile, 11, 2)
     print("程序运行总时间为:", sum_time, "s")
     f = open("result/ExDegree/ExDegree_time.txt", 'w')
