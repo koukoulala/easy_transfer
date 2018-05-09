@@ -1,4 +1,5 @@
 import numpy as np
+import config
 
 def result_try(filepath,w,n):
     # parm：文件位置，3种结构影响度构成的列表，图中类别数目，acc是准确率，err是分类错误的个数，fal是错误的行数
@@ -50,10 +51,10 @@ def result_try(filepath,w,n):
     print("MAP=",map/n)
     print("错误的总数目：", err)
     acc = 1 - (err / len(data))
-    np.savetxt("result/para/weibo_trick.csv", fal, fmt="%d", delimiter=",")
+    np.savetxt("result/para/"+config.data+".csv", fal, fmt="%d", delimiter=",")
     return acc
 
 
 if __name__ == "__main__":
-    acc = result_try("result/weibo_trick.csv", [0.36530846  ,  0.8303926   ,   1.5951966], 5)
+    acc = result_try("result/"+config.data+".csv", [ -0.14707035  ,  0.6040125  ,    0.769009], config.n)
     print("准确率为：", acc)

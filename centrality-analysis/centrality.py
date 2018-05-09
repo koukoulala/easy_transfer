@@ -1,9 +1,12 @@
 import time
 from read_structure import *
+import sys
+sys.path.append("../")
+import config
 
 if __name__=="__main__":
     start=time.clock()
-    Lfile="/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh.txt"
+    Lfile=config.ce_Lfile
     L,train_node=get_list_set(Lfile)
 
     stru_num=zeros([len(train_node),3],int)
@@ -24,7 +27,9 @@ if __name__=="__main__":
     #对数组按照num列进行从大到小的排序
     sorted_node=save_stru[argsort(-save_stru[:,4])]
     print(sorted_node[0:100,:])
-    savetxt("result/deal_cit-HepPh.csv",sorted_node,fmt="%d",delimiter=',')
+    savetxt("result/"+config.ce_data+".csv",sorted_node,fmt="%d",delimiter=',')
     end=time.clock()
     sum_time=end-start
-    print("程序运行总时间为:",sum_time,"s")
+    f = open("result/"+config.ce_data+"_time.txt", 'w')
+    f.write(str(sum_time))
+    print("程序运行总时间为:", sum_time, "s")

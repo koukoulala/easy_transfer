@@ -1,7 +1,8 @@
 from find_structure import *
+import config
 
-Lfile='/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh.txt';
-Cfile='/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh_communities.txt'
+Lfile=config.Lfile
+Cfile=config.Cfile
 L,C,LL=read_file(Lfile,Cfile)
 
 #计算图有几个Communites

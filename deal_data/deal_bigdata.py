@@ -29,14 +29,15 @@ def deal_bigdata(Lfile,Cfile):
 
     for key in C.keys():
         a=deal_LL[key]
+        # 这里的类别要从0开始
         deal_C.append((a,C[key]-1))
 
     print(deal_C[0:10])
-    np.savetxt("/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh.txt",deal_L,fmt="%d",delimiter=" ")
-    np.savetxt("/Users/didi/Desktop/store/data/cit-HepPh/deal_cit-HepPh_communities.txt", deal_C, fmt="%d", delimiter=" ")
+    np.savetxt("/Users/didi/Desktop/store/data/cite/deal_cite.txt",deal_L,fmt="%d",delimiter=" ")
+    np.savetxt("/Users/didi/Desktop/store/data/cite/deal_cite_communities.txt", deal_C, fmt="%d", delimiter=" ")
 
 
 if __name__=="__main__":
-    Lfile = '/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh.txt';
-    Cfile = '/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh_communities.txt'
+    Lfile = '/Users/didi/Desktop/store/data/cite/processed_cite.txt';
+    Cfile = '/Users/didi/Desktop/store/data/cite/processed_cite_communities.txt'
     deal_bigdata(Lfile,Cfile)

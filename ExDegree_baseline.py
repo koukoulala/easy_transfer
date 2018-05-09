@@ -84,8 +84,8 @@ def ExDegree(Lfile, Cfile, n, k):
 
 
 if __name__ == "__main__":
-    Lfile = '/Users/didi/Desktop/store/data/weibo/deal_weibo.txt';
-    Cfile = '/Users/didi/Desktop/store/data/weibo/deal_weibo_communities.txt'
+    Lfile = '/Users/didi/Desktop/store/data/cite/deal_cite.txt';
+    Cfile = '/Users/didi/Desktop/store/data/cite/deal_cite_communities.txt'
     acc = ExDegree(Lfile, Cfile, 18, 3)
     print("acc=", acc)
     f = open("result/ExDegree_acc.txt", 'w')

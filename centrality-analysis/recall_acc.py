@@ -2,12 +2,12 @@
 #对每个文件分别处理得到准确率和召回率
 def recall_acc(n):
     # 文件按中心度从高到低顺序排列，n是要读多少行
-    DNSR_path = "result/deal_cit-HepPh.csv"
-    KNN_path = "result/KNN/deal_cit-HepPh.csv"
-    ExDegree_path = "result/ExDegree/deal_cit-HepPh.csv"
-    Closeness_path = "result/closeness/deal_cit-HepPh.txt"
-    Betweenness_path = "result/betweenness/deal_cit-HepPh.txt"
-    actual_file = "/Users/didi/Desktop/store/data/cit-HepPh/deal_actual_cit-HepPh.txt"
+    DNSR_path = "result/deal_cite.csv"
+    KNN_path = "result/KNN/deal_cite.csv"
+    ExDegree_path = "result/ExDegree/deal_cite.csv"
+    Closeness_path = "result/closeness/deal_cite.txt"
+    Betweenness_path = "result/betweenness/deal_cite.txt"
+    actual_file = "/Users/didi/Desktop/store/data/cite/deal_actual_cite.txt"
 
     DNSR_node=0;KNN_node=0;ExDegree_node=0;Closeness_node=0;Betweenness_node=0
     actual_node=[]
@@ -59,7 +59,7 @@ def recall_acc(n):
         for lines in f.readlines():
             if i == n:
                 break
-            line = lines.strip("\n").split(",")
+            line = lines.strip("\n").split(" ")
             if line[0] in actual_node:
                 Closeness_node += 1
             i += 1
@@ -70,11 +70,11 @@ def recall_acc(n):
         for lines in f.readlines():
             if i == n:
                 break
-            line = lines.strip("\n").split(",")
+            line = lines.strip("\n").split(" ")
             if line[0] in actual_node:
                 Betweenness_node += 1
             i += 1
     print("Betweenness识别到正确节点数目：", Betweenness_node, "召回率为：", 1.0 * Betweenness_node / n)
 
 if __name__=="__main__":
-    recall_acc(500)
+    recall_acc(650)

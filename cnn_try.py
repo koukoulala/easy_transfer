@@ -5,13 +5,14 @@ import os
 import tensorflow as tf
 import numpy as np
 import time
+import config
 
 #使用cnn进行训练，得到准确率最高时的3个权重
 start_time = time.time()
 path = 'img/'
 
 # 将所有的图片resize
-w =5
+w =config.n
 h = 3
 c = 1            #c是指图像的通道数,灰度图像是单通道的
 
@@ -42,7 +43,7 @@ data = data[arr]          #按照arr的顺序来重新排列data
 label = label[arr]
 
 # 将所有数据分为训练集和验证集
-ratio = 0.1
+ratio = 0.9
 s = np.int(num_example * ratio)
 x_train = data[:s]
 y_train = label[:s]
@@ -55,11 +56,11 @@ x = tf.placeholder(tf.float32, shape=[None, w, h,c], name='x')
 y_ = tf.placeholder(tf.int32, shape=[None, ], name='y_')
 
 # 第一个卷积层（8*3*1——>8*1*1),1个卷积核，步长是1,从截断的正态分布中输出随机值
-#conv1 = tf.layers.conv2d(inputs=x, filters=1, kernel_size=[1,3], activation=tf.nn.relu,strides=1,name="conv1",
-#                         kernel_initializer=tf.truncated_normal_initializer(stddev=0.01))
-
 conv1 = tf.layers.conv2d(inputs=x, filters=1, kernel_size=[1,3], activation=tf.nn.relu,strides=1,name="conv1",
-                         kernel_initializer=tf.random_uniform_initializer(minval=0, maxval=None))
+                         kernel_initializer=tf.truncated_normal_initializer(stddev=0.01))
+
+#conv1 = tf.layers.conv2d(inputs=x, filters=1, kernel_size=[1,3], activation=tf.nn.relu,strides=1,name="conv1",
+#                         kernel_initializer=tf.random_uniform_initializer(minval=0, maxval=None))
 
 re1 = tf.reshape(conv1, [-1, w * 1 * 1])
 
@@ -76,7 +77,7 @@ logits = tf.layers.dense(inputs=dense2, units=w, activation=None,
 # ---------------------------网络结束---------------------------
 
 loss = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=logits)
-train_op = tf.train.AdamOptimizer(learning_rate=0.001).minimize(loss)
+train_op = tf.train.AdamOptimizer(learning_rate=0.01).minimize(loss)
 correct_prediction = tf.equal(tf.cast(tf.argmax(logits, 1), tf.int32), y_)  #找一行中最大的那个值与标签比较
 acc = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
@@ -97,7 +98,7 @@ def minibatches(inputs=None, targets=None, batch_size=None, shuffle=False):
 
 # 训练和测试数据，可将n_epoch设置更大一些
 
-n_epoch = 80
+n_epoch = 300
 batch_size = 300
 max_acc=0;k_epoch=0;     #最大的准确率以及第几次迭代
 save_csv=[]
@@ -153,5 +154,5 @@ num_time=end_time-start_time;
 print("第",k_epoch ,"次迭代时达到最大准确率为：",max_acc)
 print("最大准确率时的权重值：",w[0],"  ",w[1],"    ",w[2])
 print("运行总时间为：",num_time)
-savetxt("result/model/weibo_trick.csv",save_csv,fmt="%f",delimiter=",")
+savetxt("result/model/"+config.data+".csv",save_csv,fmt="%f",delimiter=",")
 sess.close()

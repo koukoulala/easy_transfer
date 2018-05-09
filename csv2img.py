@@ -1,6 +1,7 @@
 import numpy as np
 import os
 from PIL import Image
+import config
 
 #把节点邻居结构的csv文件转换成一个节点一个image，不同类别放在不同文件夹中，每个节点都是n行3列的图片
 #注意，将数目都*10，防止梯度消失
@@ -23,7 +24,7 @@ def csv2img(filepath,n):
             image=Image.fromarray(img) #从数据生成image对象
 
             #生成保存image的路径
-            path="img/weibo_trick_"+label
+            path="img/"+config.data+label
             if not os.path.isdir(path):
                 os.makedirs(path)
             path =path+ "/" + node + ".png"
@@ -32,4 +33,4 @@ def csv2img(filepath,n):
 
 
 if __name__=="__main__":
-    csv2img('result/weibo_trick.csv',5)
+    csv2img("result/"+config.data+".csv",config.n)

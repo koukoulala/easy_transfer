@@ -1,11 +1,17 @@
 import numpy as np
+import random
 
 def process_data(Lfile, Cfile):
-
+    #仅保留两个文件中都有的节点
     L=[];LL=set();C={};CC=[];
+    m=0
     with open(Lfile,'r')as f:
         for line in f.readlines():
-            line=[int(x) for x in line.split()]
+            #if m>1000000:
+                #break
+            #m+=1
+            line=line.strip('\n').split(' ')
+            line=[int(x) for x in line]
             L.append(line)
             for i in line:
                 LL.add(i)
@@ -16,7 +22,13 @@ def process_data(Lfile, Cfile):
                 C[key]=value
                 CC.append((key,value))
 
-    print(len(C),len(L))
+    print(len(C),len(L),len(LL))
+
+    #随机从列表选择一些节点进行测试
+    rate = 0.001
+    size = int(rate * len(L))
+    L=random.sample(L,size)
+
 
     processed_L=[];processed_LL=set();processed_CC=[]
     for i in L:
@@ -32,10 +44,10 @@ def process_data(Lfile, Cfile):
             processed_CC.append((key,C[key]))
     print(len(processed_CC),len(processed_L),len(processed_LL))
 
-    np.savetxt("/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh.txt",processed_L,fmt="%d",delimiter=" ")
-    np.savetxt("/Users/didi/Desktop/store/data/cit-HepPh/processed_cit-HepPh_communities.txt",processed_CC,fmt="%d",delimiter=" ")
+    np.savetxt("/Users/didi/Desktop/store/data/cite/processed_cite.txt",processed_L,fmt="%d",delimiter=" ")
+    np.savetxt("/Users/didi/Desktop/store/data/cite/processed_cite_communities.txt",processed_CC,fmt="%d",delimiter=" ")
 
 if __name__=="__main__":
-    Lfile='/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh.txt';
-    Cfile='/Users/didi/Desktop/store/data/cit-HepPh/cit-HepPh_communities.txt'
+    Lfile='/Users/didi/Desktop/store/data/cite/cite.txt';
+    Cfile='/Users/didi/Desktop/store/data/cite/cite_communities.txt'
     process_data(Lfile, Cfile)
